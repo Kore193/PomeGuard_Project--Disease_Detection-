@@ -46,3 +46,54 @@ PomeGuard utilizes a standard **Three-Tier Architecture** separating the client 
             ▼
 [ Relational Storage Tier (MySQL) ]
   └── pomeguard_db (users, diseases, scan_history, contact_messages)
+
+---
+
+## 🔬 Pathogen Classification Scope
+
+| Pathogen Class | Causative Agent / Type | Characteristic Symptoms |
+| :--- | :--- | :--- |
+| **Bacterial Blight** | *Xanthomonas axonopodis* pv. *punicae* | Water-soaked dark lesions on leaves, cracking on fruits |
+| **Anthracnose** | *Colletotrichum gloeosporioides* | Circular, dark brown to black sunken spots on leaves/rind |
+| **Alternaria** | *Alternaria alternata* | Concentric rings forming target-board-like leaf spots |
+| **Cercospora** | *Cercospora punicae* | Irregular grayish-brown spots with prominent margins |
+| **Healthy** | N/A (Baseline Control) | Normal vegetative leaf and fruit tissues |
+| **Not_Pomegranate** | Outlier Filter Class | Non-agricultural or irrelevant images |
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** HTML5, CSS3 (Glassmorphism), Vanilla JavaScript (ES6+ Asynchronous Fetch, HTML5 Canvas API)
+* **Backend:** FastAPI (Python), Uvicorn (ASGI Server), Pydantic
+* **Machine Learning:** ResNet34 (Residual Network), Roboflow Inference SDK
+* **Database:** MySQL (MariaDB / XAMPP Stack), `mysql-connector-python`
+* **Authentication & Security:** Python-Jose (JWT), Passlib (Bcrypt)
+
+---
+
+## 📁 Repository Structure
+
+```text
+pomeguard/
+│
+├── guides/                             # Static disease treatment guides (PDFs)
+│   ├── Bacterial_Blight_Guide.pdf
+│   ├── Anthracnose_Guide.pdf
+│   ├── Alternaria_Guide.pdf
+│   ├── Cercospora_Guide.pdf
+│   └── Healthy_Guide.pdf
+│
+├── templates/                          # Application pages
+│   ├── index.html                      # Main landing & dashboard
+│   ├── login.html                      # Authentication gateway
+│   ├── webcam.html                     # Live video capture interface
+│   └── upload.html                     # Drag-and-drop file upload interface
+│
+├── static/                             # Static UI assets (CSS, branding logos)
+├── upload.js                           # Upload interface client logic
+├── webcam.js                           # Hardware camera capture & canvas logic
+├── main.py                             # Core FastAPI application & REST endpoints
+├── database_setup.sql                  # Database schema definitions & seed rows
+├── requirements.txt                    # Project Python dependencies
+└── README.md                           # Project documentation
