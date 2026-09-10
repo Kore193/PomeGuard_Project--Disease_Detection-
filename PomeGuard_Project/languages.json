@@ -1,0 +1,36 @@
+{
+  "en": {
+    "nav_home": "Home",
+    "nav_webcam": "Webcam",
+    "nav_upload": "Upload",
+    "nav_history": "My History",
+    "nav_about": "About",
+    "nav_contact": "Contact Us",
+    "nav_login": "Login",
+    "nav_logout": "Logout",
+    "upload_header": "Pomegranate Disease Detection - Upload",
+    "btn_predict": "Predict",
+    "btn_start_webcam": "Start Webcam",
+    "result_description": "Description",
+    "solution_organic_h": "🌱 Organic Solution",
+    "solution_chemical_h": "🧪 Chemical Solution"
+ 
+  },
+  "mr": {
+    "nav_home": "मुख्यपृष्ठ",
+    "nav_webcam": "वेबकॅम",
+    "nav_upload": "अपलोड",
+    "nav_history": "माझा इतिहास",
+    "nav_about": "माहिती",
+    "nav_contact": "संपर्क",
+    "nav_login": "लॉग इन",
+    "nav_logout": "बाहेर पडा",
+    "upload_header": "डाळिंब रोग निदान - अपलोड करा",
+    "btn_predict": "अंदाज लावा",
+    "btn_start_webcam": "वेबकॅम सुरू करा",
+    "result_description": "वर्णन",
+    "solution_organic_h": "🌱 सेंद्रिय उपाय",
+    "solution_chemical_h": "🧪 रासायनिक उपाय"
+  
+  }
+}
