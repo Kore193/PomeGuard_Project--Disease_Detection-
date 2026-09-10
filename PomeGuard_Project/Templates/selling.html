@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace - PomoGuard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .product-card p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 18px;
+      color: #4CAF50;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Farmer Marketplace</h1>
+  <p>Buy directly from local farmers</p>
+</header>
+
+<div class="container">
+  <h2>Available Products</h2>
+
+  <div class="products">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250x180.png?text=Pomegranate" alt="Pomegranate">
+      <h3>Fresh Pomegranates</h3>
+      <p>High-quality organic pomegranates from our farm.</p>
+      <div class="price">₹120 / kg</div>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250x180.png?text=Fertilizer" alt="Fertilizer">
+      <h3>Natural Fertilizer</h3>
+      <p>Eco-friendly fertilizer to boost crop health.</p>
+      <div class="price">₹300 / 5kg bag</div>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250x180.png?text=Juice" alt="Pomegranate Juice">
+      <h3>Pomegranate Juice</h3>
+      <p>Freshly prepared, no preservatives added.</p>
+      <div class="price">₹80 / bottle</div>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

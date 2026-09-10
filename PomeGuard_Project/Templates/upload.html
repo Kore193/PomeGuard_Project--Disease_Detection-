@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomeGuard - Upload Image</title>
+    <style>
+        :root {
+            --bg-dark: #121826;
+            --bg-card: #1f2937;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-white: #f8fafc;
+            --text-gray: #9ca3af;
+            --green-primary: #10b981;
+            --banner-bg: #fffbeb;
+            --banner-text: #92400e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px; 
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .back-btn {
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .back-btn:hover { color: var(--green-primary); }
+
+        .page-title { font-size: 36px; font-weight: 800; margin-bottom: 10px; text-align: center; color: var(--green-primary); }
+        .page-subtitle { color: var(--text-gray); margin-bottom: 30px; font-size: 15px; text-align: center; }
+
+        .scanner-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .drop-zone {
+            width: 100%;
+            max-width: 500px;
+            height: 250px;
+            border: 2px dashed var(--text-gray);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.02);
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--green-primary);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .drop-zone svg {
+            width: 60px;
+            height: 60px;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .drop-zone:hover svg, .drop-zone.dragover svg {
+            color: var(--green-primary);
+        }
+
+        .drop-zone h3 { font-size: 18px; font-weight: 600; margin-bottom: 5px; }
+        .drop-zone p { font-size: 14px; color: var(--text-gray); }
+
+   
+        #previewContainer {
+            width: 100%;
+            max-width: 500px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #imagePreview {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        #statusMessage { margin-top: 20px; font-weight: 600; text-align: center;}
+        #resultsContainer { width: 100%; margin-top: 20px; }
+
+        .action-button-group {
+            width: 100%;
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-gray);
+            background: transparent;
+            color: var(--text-white);
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        .btn-filled {
+            border: none;
+            background: var(--green-primary);
+            color: white;
+        }
+        .btn-filled:hover { background: #059669; }
+
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <a href="Home.html" class="back-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Home
+        </a>
+
+        <h1 class="page-title">Upload Image</h1>
+        <p class="page-subtitle">Upload a clear photo of a pomegranate fruit from your device.</p>
+
+        <div class="scanner-card">
+            
+            <div class="drop-zone" id="dropZone">
+                <input type="file" id="fileInput" hidden accept="image/*">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                <h3>Drag & Drop Image Here</h3>
+                <p>or click to browse your files</p>
+            </div>
+
+            <div id="previewContainer">
+                <img id="imagePreview" alt="Selected Image" />
+                <div class="action-button-group">
+                    <button id="resetBtn" class="action-btn btn-outline">Choose Another</button>
+                    <button id="analyzeBtn" class="action-btn btn-filled">Analyze Image</button>
+                </div>
+            </div>
+            
+            <div id="statusMessage"></div>
+            <div id="resultsContainer"></div>
+
+            <div class="action-button-group" id="postAnalysisButtons" style="display: none;">
+                <button id="newUploadBtn" class="action-btn btn-outline">Upload New Image</button>
+                <a href="Home.html" class="action-btn btn-filled">Back to Home</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="upload.js"></script>
+</body>
+</html>

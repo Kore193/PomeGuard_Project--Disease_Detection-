@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomeGuard - Contact Support</title>
+    <style>
+        :root {
+            --bg-dark: #070B16;
+            --bg-card: rgba(18, 24, 38, 0.8);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-white: #f8fafc;
+            --text-gray: #9ca3af;
+            --green-primary: #16a34a;
+            --green-hover: #15803d;
+            --input-bg: rgba(30, 41, 59, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 0%, rgba(22, 163, 74, 0.05) 0%, transparent 50%);
+            color: var(--text-white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centers everything vertically on screen */
+            padding: 20px;
+            overflow: hidden; /* Disables unnecessary page scrolling */
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 1050px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+            width: fit-content;
+        }
+        .back-btn:hover { color: var(--green-primary); }
+
+        .header-section { text-align: center; margin-bottom: 5px;color: var(--green-primary); }
+        .header-section h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .header-section p { color: var(--text-gray); font-size: 14px; max-width: 500px; margin: 0 auto; line-height: 1.4; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        /* --- Compact Form Container --- */
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 25px 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+
+        .input-group { margin-bottom: 14px; }
+        .input-group label { display: block; font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
+        
+        .input-group input, .input-group textarea {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: var(--text-white);
+            font-size: 13.5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: var(--green-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--green-primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 5px;
+        }
+        .submit-btn:hover { background-color: var(--green-hover); }
+
+        /* --- Right-Side Information Subpanels --- */
+        .info-panel { display: flex; flex-direction: column; gap: 24px; }
+
+        .info-row { display: flex; align-items: center; gap: 16px; }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            background: rgba(22, 163, 74, 0.1);
+            border: 1px solid rgba(22, 163, 74, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-primary);
+            flex-shrink: 0;
+        }
+
+        .info-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; color: var(--text-white); }
+        .info-content p { font-size: 13px; color: var(--text-gray); line-height: 1.4; }
+        .info-content .highlight-text { font-weight: 700; margin-top: 2px; display: block; font-size: 14px; }
+        
+        .text-green { color: var(--green-primary); }
+
+        @media (max-width: 768px) {
+            body { overflow-y: auto; height: auto; padding: 40px 20px; }
+            .main-grid { grid-template-columns: 1fr; gap: 30px; }
+            .form-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <a href="home.html" class="back-btn">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Dashboard
+        </a>
+
+        <div class="header-section">
+            <h1>Contact Support</h1>
+            <p>Need help using PomeGuard or have questions about agricultural treatments?</p>
+        </div>
+
+        <div class="main-grid">
+            <div class="form-card">
+                <h2>Send us a message</h2>
+                <form id="contactForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="contactName" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="contactEmail" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="contactMessage" rows="4" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-row">
+                    <div class="icon-box">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Phone Support (Toll-Free)</h4>
+                        <span class="highlight-text text-green">7887571722</span>
+                        <span class="highlight-text text-green">8010445703</span>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="icon-box">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email Support</h4>
+                        <p>We typically reply within 24 hours.</p>
+                        <span class="highlight-text text-green">pomeguard@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="icon-box">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Office Headquarters</h4>
+                        <p>PomeGuard Pvt. Ltd.<br>Sangola, Maharashtra 413307</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" style="display: none; position: fixed; inset: 0; background: rgba(7, 11, 22, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center;">
+        <div style="background: #121826; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; width: 90%; max-width: 380px; padding: 30px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); transform: scale(0.95); transition: transform 0.2s ease;">
+            
+            <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.1); color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px auto;">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+
+            <h4 style="font-size: 20px; font-weight: 700; color: #f8fafc; margin-bottom: 8px;">Message Sent!</h4>
+            <p style="font-size: 14px; color: var(--text-gray); line-height: 1.5; margin-bottom: 24px;">Thank you for reaching out. Our support team has safely received your query and will reply within 24 hours.</p>
+            
+            <button id="closeSuccessBtn" style="width: 100%; padding: 11px; background: var(--green-primary); border: none; border-radius: 25px; color: white; font-weight: 700; font-size: 14px; cursor: pointer; transition: background-color 0.2s;">
+                Great, Thanks!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const modal = document.getElementById('successModal');
+        const closeBtn = document.getElementById('closeSuccessBtn');
+
+        // Function execution loop trigger to open premium modal overlay
+        const showSuccessModal = () => {
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => { modal.firstElementChild.style.transform = 'scale(1)'; }, 10);
+            }
+        };
+
+        // Function execution loop trigger to close premium modal cleanly
+        const closeModal = () => {
+            if (modal) {
+                modal.firstElementChild.style.transform = 'scale(0.95)';
+                setTimeout(() => { modal.style.display = 'none'; }, 150);
+            }
+        };
+
+        closeBtn?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('.submit-btn');
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:8001/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    form.reset(); 
+                    showSuccessModal(); 
+                } else {
+                    alert(`⚠️ Error: ${data.detail || 'Could not process message submission.'}`);
+                }
+            } catch (err) {
+                console.error(err);
+                alert("⚠️ Network Error: Unable to communicate with the backend server.");
+            } finally {
+                submitBtn.innerText = "Send Message";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

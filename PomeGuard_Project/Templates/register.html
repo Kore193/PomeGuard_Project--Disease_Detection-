@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomeGuard - Register</title>
+    <style>
+        :root {
+            --bg-dark: #070B16;
+            --bg-card: rgba(18, 24, 38, 0.8);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-white: #f8fafc;
+            --text-gray: #9ca3af;
+            --green-primary: #16a34a;
+            --green-hover: #15803d;
+            --input-bg: rgba(0, 0, 0, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-dark); background-image: radial-gradient(circle at 50% 0%, rgba(22, 163, 74, 0.1) 0%, transparent 50%); color: var(--text-white); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .auth-container { width: 100%; max-width: 420px; background: var(--bg-card); padding: 40px; border: 1px solid var(--border-glass); border-radius: 20px; backdrop-filter: blur(12px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .auth-header { text-align: center; margin-bottom: 30px; }
+        .auth-header h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; color: var(--text-white); }
+        .auth-header p { font-size: 14px; color: var(--text-gray); line-height: 1.5; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-gray); }
+        .form-group input { width: 100%; padding: 14px 16px; border: 1px solid var(--border-glass); border-radius: 8px; font-size: 15px; color: var(--text-white); background-color: var(--input-bg); transition: all 0.3s ease; }
+        .form-group input:focus { outline: none; border-color: var(--green-primary); box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2); }
+        .password-container { position: relative; display: flex; align-items: center; }
+        .password-container input { padding-right: 60px; }
+        .toggle-btn { position: absolute; right: 12px; background: none; border: none; color: var(--green-primary); font-weight: 700; font-size: 13px; cursor: pointer; text-transform: uppercase; }
+        .toggle-btn:hover { color: var(--text-white); }
+        .auth-btn { width: 100%; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 8px; cursor: pointer; background-color: var(--green-primary); color: white; border: none; margin-top: 10px; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(22, 163, 74, 0.3); }
+        .auth-btn:hover { background-color: var(--green-hover); transform: translateY(-2px); }
+        .auth-link { text-align: center; margin-top: 25px; font-size: 14px; color: var(--text-gray); }
+        .auth-link a { color: var(--green-primary); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .auth-link a:hover { color: white; }
+        #message { margin-bottom: 20px; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; display: none; text-align: center; word-break: break-word; }
+        #message:not(:empty) { display: block; }
+        #message.success { background-color: rgba(22, 163, 74, 0.1); color: #4ade80; border: 1px solid rgba(22, 163, 74, 0.3); }
+        #message.error { background-color: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join PomeGuard to save your field scan history.</p>
+        </div>
+
+        <form id="registerForm" class="auth-form">
+            <div id="message"></div>
+
+            <div class="form-group">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" placeholder="Choose a username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regEmail">Email Address</label>
+                <input type="email" id="regEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regPhone">Phone Number</label>
+                <input type="tel" id="regPhone" placeholder="Enter your phone number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <div class="password-container">
+                    <input type="password" id="regPassword" placeholder="••••••••" required>
+                    <button type="button" id="togglePassword" class="toggle-btn">Show</button>
+                </div>
+            </div>
+
+            <button type="submit" class="auth-btn">Create Account</button>
+            
+            <div class="auth-link">
+                <p>Already have an account? <a href="login.html">Sign in here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Toggle Password Logic
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('regPassword');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.textContent = type === 'password' ? 'Show' : 'Hide';
+            });
+        }
+
+        // Registration Logic
+        const registerForm = document.getElementById('registerForm');
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); 
+
+                const username = document.getElementById('regUsername').value;
+                const email = document.getElementById('regEmail').value;
+                const phone = document.getElementById('regPhone').value;
+                const password = document.getElementById('regPassword').value;
+                
+                const messageDiv = document.getElementById('message');
+                const submitBtn = registerForm.querySelector('button[type="submit"]');
+
+                messageDiv.textContent = "🔄 Creating account...";
+                messageDiv.className = ""; 
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = "0.7";
+
+                const userData = {
+                    username: username,
+                    email: email,
+                    phone_number: phone,
+                    password: password
+                };
+
+                try {
+                    // Registration expects raw JSON
+                    const response = await fetch('http://127.0.0.1:8001/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(userData),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        messageDiv.textContent = "✅ Account created! Redirecting to login...";
+                        messageDiv.className = "success";
+                        
+                        setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+                        
+                    } else {
+                        messageDiv.textContent = "❌ " + (data.detail || "Registration failed. Username may exist.");
+                        messageDiv.className = "error";
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = "1";
+                    }
+                } catch (error) {
+                    console.error('Register Endpoint Error:', error);
+                    messageDiv.textContent = "📡 Could not connect to the PomeGuard backend services.";
+                    messageDiv.className = "error";
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
